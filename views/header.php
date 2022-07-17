@@ -9,5 +9,6 @@ echo '<!DOCTYPE html>
     <title>BK_system</title>
     <script src="../library/jQuery 3.6.0.js"></script>
     <script src="../js/auth.js"></script>
+    <script src="../js/menu.js"></script>
 </head>';
 ?>
