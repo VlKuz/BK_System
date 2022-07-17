@@ -1,10 +1,8 @@
 <?php
-include "../modules/header.php";
+include '../modules/header.php';
+echo '<body>';
+include "../modules/system_name.php";
 ?>
-<body>
-  <div id="block_up" class="block_up">
-    <a class="system_name" href="index.html">BK control system</a>
-  </div>
     <div class="form_auth_block">
         <div class="form_auth_block_content">
           <p class="form_auth_block_head_text">Авторизация</p>
@@ -13,8 +11,8 @@ include "../modules/header.php";
             <button class="form_auth_button" type="button" name="form_auth_submit" onclick="user_auth()">Войти</button>
         </div>
       </div>
-  <?php
-  include "../modules/footer.php";
-  ?>
+<?php
+include '../modules/footer.php';
+?>
 </body>
 </html>
