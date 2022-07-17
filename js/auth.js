@@ -11,7 +11,7 @@ $(document).ready(function(){
                 if(data==1)
                     alert('hi');
                 else
-                message.html('<br>Не верный логин или пароль!');
+                    message.html('<br>Не верный логин или пароль!');
             }
         });
     });
