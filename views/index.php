@@ -10,7 +10,8 @@ include "../modules/system_name.php";
             <input id="pass" type="password" name="auth_pass" placeholder="Введите пароль" required >
             <button class="form_auth_button" type="button" name="form_auth_submit" onclick="user_auth()">Войти</button>
         </div>
-      </div>
+        <div class="message"></div>
+    </div>
 <?php
 include '../modules/footer.php';
 ?>
