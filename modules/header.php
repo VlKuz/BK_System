@@ -7,5 +7,7 @@ echo '<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>BK_system</title>
+    <script src="../library/jQuery 3.6.0.js"></script>
+    <script src="../js/auth.js"></script>
 </head>';
 ?>
