@@ -1,12 +1,17 @@
 $(document).ready(function(){
-    $(".form_auth_button").on("submit", function(){
-        let massage = $('.massage');
+    $("#auth_from").submit(function (e){
+        e.preventDefault();
+        let message = $('.message');
+        let form_data = $(this).serialize();
         $.ajax({
             url: '../modules/auth.php',
             method: 'POST',
-            data: $(this).serialize(),
+            data: form_data,
             success: function(data){
-                massage.html(data);
+                if(data==1)
+                    alert('hi');
+                else
+                message.html('<br>Не верный логин или пароль!');
             }
         });
     });
