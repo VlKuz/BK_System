@@ -4,7 +4,7 @@ echo '<body>';
 include "../modules/system_name.php";
 ?>
     <div class="form_auth_block">
-        <form class="form_auth_block_content">
+        <form id="auth_from" class="form_auth_block_content">
             <p class="form_auth_block_head_text">Авторизация</p>
             <input id="login" type="login" name="login" placeholder="Введите логин" required><br>
             <input id="pass" type="password" name="auth_pass" placeholder="Введите пароль" required >
