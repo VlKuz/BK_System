@@ -1,5 +1,5 @@
 <?php
-include "modules/header.php";
+include "../modules/header.php";
 ?>
 <body>
   <div id="block_up" class="block_up">
@@ -14,7 +14,7 @@ include "modules/header.php";
         </div>
       </div>
   <?php
-  include "modules/footer.php";
+  include "../modules/footer.php";
   ?>
 </body>
 </html>
