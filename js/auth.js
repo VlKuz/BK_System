@@ -1,12 +1,12 @@
 $(document).ready(function(){
-    $("#form").on("submit", function(){
+    $(".form_auth_button").on("submit", function(){
         let massage = $('.massage');
         $.ajax({
             url: '../modules/auth.php',
-            method: 'post',
+            method: 'POST',
             data: $(this).serialize(),
             success: function(data){
-                $('#message').html(data);
+                massage.html(data);
             }
         });
     });
