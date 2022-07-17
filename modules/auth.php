@@ -11,7 +11,6 @@ $user = $query->fetch(PDO::FETCH_ASSOC);
 if($user && password_verify($password, $user["password"])){
     session_start();
     echo 1;
-    
 }else
     echo 2;
 ?>

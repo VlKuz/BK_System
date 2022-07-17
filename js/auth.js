@@ -8,8 +8,10 @@ $(document).ready(function(){
             method: 'POST',
             data: form_data,
             success: function(data){
-                if(data==1)
-                    alert('hi');
+                if(data==1){
+                    message.html('<br>Добро пожаловать!');
+                    menu_generator();
+                }
                 else
                     message.html('<br>Не верный логин или пароль!');
             }
