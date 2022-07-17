@@ -1,7 +1,7 @@
 <?php
-include '../modules/header.php';
+include 'header.php';
 echo '<body>';
-include "../modules/system_name.php";
+include 'system_name.php';
 ?>
     <div class="form_auth_block">
         <form id="auth_from" class="form_auth_block_content">
@@ -13,7 +13,7 @@ include "../modules/system_name.php";
         <div class="message"></div>
     </div>
 <?php
-include '../modules/footer.php';
+include 'footer.php';
 ?>
 </body>
 </html>
