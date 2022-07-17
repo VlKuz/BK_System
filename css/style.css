@@ -78,6 +78,10 @@
       background-color: black;
       color: white;
   }
+
+  .message{
+    text-align: center;
+  }
   
   .container {
     display: flex;
