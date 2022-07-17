@@ -1,14 +1,4 @@
-function user_auth(){
-    let user_login = document.getElementById('login');
+$('.form_auth_button').click(function(){
 
-    let user_pass = document.getElementById('pass');
-
-    if (user_login.value==''||user_pass.value=='')
-        alert('Одно из полей не заполнено!');
-    else if (user_login.value=='admin'&&user_pass.value==123){
-        alert('Добро пожаловать!');
-        menu_generator();
-    }
-    else
-        alert('Неверный логин или пароль!');
-}
+    alert('hi');
+});
