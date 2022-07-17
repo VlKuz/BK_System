@@ -10,9 +10,8 @@ $user = $query->fetch(PDO::FETCH_ASSOC);
 
 if($user && password_verify($password, $user["password"])){
     session_start();
-    echo "Успешная авторизация<br>";
-    echo $user["last_name"]," ",$user["name"];
+    echo 1;
     
 }else
-    echo "Не верный логин или пароль";
+    echo 2;
 ?>
