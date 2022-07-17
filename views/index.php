@@ -8,7 +8,7 @@ include "../modules/system_name.php";
           <p class="form_auth_block_head_text">Авторизация</p>
             <input id="login" type="login" name="login" placeholder="Введите логин" required><br>
             <input id="pass" type="password" name="auth_pass" placeholder="Введите пароль" required >
-            <button class="form_auth_button" name="form_auth_submit" onclick="user_auth()">Войти</button>
+            <button class="form_auth_button" name="form_auth_submit">Войти</button>
         </div>
         <div class="message"></div>
     </div>
