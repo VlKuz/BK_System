@@ -10,6 +10,5 @@ echo '<!DOCTYPE html>
     <script src="../library/jQuery 3.6.0.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/menu.js"></script>
-    <script src="../js/button_generator.js"></script>
 </head>';
 ?>
