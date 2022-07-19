@@ -4,7 +4,9 @@ include 'header.php';
 echo '<body>';
 if(isset($_SESSION["user_name"])){
     include 'system_name.php';
+    echo '<div id="container" class="container">';
     echo '<div class="user">'.$_SESSION["user_name"].'</div>';
+    echo '</div>';
     echo '<script>menu_generator()</script>';
 }else{
     include 'system_name.php';
