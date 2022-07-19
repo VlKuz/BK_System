@@ -163,6 +163,36 @@ $(document).ready(function(){
         });
     });
 
+    $(document).on('click','#add_book', function(){
+        let title = prompt('Введите название книги:');
+        let author  = prompt('Введите автора книги:');
+        let year  = prompt('Введите год издания книги:');
+        let price  = prompt('Введите цену книги:');
+        let quantity  = prompt('Введите количество книг:');
+        $.ajax({
+            url: '../modules/add_book.php',
+            method: 'POST',
+            data: {title: title, author: author, year: year, price: price, quantity: quantity},
+            success: function(data){
+                if(data){
+                    alert(data);
+                    $.ajax({
+                        url: '../modules/show_books.php',
+                        method: 'POST',
+                        data: 'books',
+                        success: function(data){
+                            if(data){
+                                $('.books').html(data);
+                            }else
+                                alert('error');
+                        }
+                    });
+                }else
+                    alert('error');
+            }
+        });
+    });
+
     $(document).on('click','#buy_book', function(){
         $.ajax({
             url: '../modules/buy_books.php',
