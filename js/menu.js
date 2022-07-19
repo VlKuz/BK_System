@@ -45,10 +45,12 @@ $(document).ready(function(){
                     button_catalog_container_class.className = 'button_catalog_container';
                     return_button.after(button_catalog_container_class);
                     button_catalog_container_class.append(button_generator('catalog_button','change_title','','Изменить название'));
-                    button_catalog_container_class.append(button_generator('catalog_button','change_author()','','Изменить автора'));
-                    button_catalog_container_class.append(button_generator('catalog_button','change_year()','','Изменить год'));
-                    button_catalog_container_class.append(button_generator('catalog_button','change_price()','','Изменить цену'));
-                    button_catalog_container_class.append(button_generator('catalog_button','change_quantity()','','Изменить количество'));
+                    button_catalog_container_class.append(button_generator('catalog_button','change_author','','Изменить автора'));
+                    button_catalog_container_class.append(button_generator('catalog_button','change_year','','Изменить год'));
+                    button_catalog_container_class.append(button_generator('catalog_button','change_price','','Изменить цену'));
+                    button_catalog_container_class.append(button_generator('catalog_button','change_quantity','','Изменить количество'));
+                    button_catalog_container_class.append(button_generator('catalog_button','add_book','','Добавить кингу'));
+                    button_catalog_container_class.append(button_generator('catalog_button','delete_book','','Удалить книгу'));
                     $(button_catalog_container_class).after('<div class = "books"></div>');
                     $('.books').html(data);
                 }else
