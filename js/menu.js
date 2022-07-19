@@ -20,6 +20,7 @@ $(document).ready(function(){
                     $('.button_catalog_container').remove();
                     $('.books').remove();
                     $('.supplier_books').remove();
+                    $('.balance').remove();
                     $('#save_a_report').remove();
                     $('#report_container').remove();
                     $('.report').remove();
@@ -252,21 +253,33 @@ $(document).ready(function(){
     });
 
     $(document).on('click','#buy_book', function(){
+        $('#container').remove();
+        let return_button = button_generator('return_button','return_button',' ','Назад');
+        $('#block_up').after(return_button);
         $.ajax({
-            url: '../modules/buy_books.php',
+            url: '../modules/balance.php',
             method: 'POST',
-            data: 'supplier_books',
+            data: 'balance',
             success: function(data){
                 if(data){
-                    $('#container').remove();
-                    let return_button = button_generator('return_button','return_button',' ','Назад');
-                    $('#block_up').after(return_button);
-                    let button_catalog_container_class = document.createElement('div');
-                    button_catalog_container_class.className = 'button_catalog_container';
-                    return_button.after(button_catalog_container_class);
-                    button_catalog_container_class.append(button_generator('catalog_button','','buy_new_book()','Купить книгу'));
-                    $(button_catalog_container_class).after('<div class = "supplier_books"></div>');
-                    $('.supplier_books').html(data);
+                    $('#return_button').after('<div class = "balance"></div>');
+                    $('.balance').html(data);
+                    $.ajax({
+                        url: '../modules/buy_books.php',
+                        method: 'POST',
+                        data: 'supplier_books',
+                        success: function(data){
+                            if(data){
+                                let button_catalog_container_class = document.createElement('div');
+                                button_catalog_container_class.className = 'button_catalog_container';
+                                $('.balance').after(button_catalog_container_class);
+                                button_catalog_container_class.append(button_generator('catalog_button','','buy_new_book()','Купить книгу'));
+                                $(button_catalog_container_class).after('<div class = "supplier_books"></div>');
+                                $('.supplier_books').html(data);
+                            }else
+                                alert('error');
+                        }
+                    });
                 }else
                     alert('error');
             }
