@@ -193,6 +193,31 @@ $(document).ready(function(){
         });
     });
 
+    $(document).on('click','#delete_book', function(){
+        let id = prompt('Введите id книги:');
+        $.ajax({
+            url: '../modules/delete_book.php',
+            method: 'POST',
+            data: {book_id: id},
+            success: function(data){
+                if(data){
+                    $.ajax({
+                        url: '../modules/show_books.php',
+                        method: 'POST',
+                        data: 'books',
+                        success: function(data){
+                            if(data){
+                                $('.books').html(data);
+                            }else
+                                alert('error');
+                        }
+                    });
+                }else
+                    alert('error');
+            }
+        });
+    });
+
     $(document).on('click','#buy_book', function(){
         $.ajax({
             url: '../modules/buy_books.php',
