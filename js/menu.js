@@ -18,7 +18,24 @@ function menu_generator(){
 }
 
 $(document).ready(function(){
-
+    $(document).on('click', '#return_button', function(){
+        $.ajax({
+            url: '../views/menu.php',
+            method: 'POST',
+            data: 'menu',
+            success: function(data){
+                if(data){
+                    $('.return_button').remove();
+                    $('.button_catalog_container').remove();
+                    $('.books').remove();
+                    $('#block_up').after(data);
+                }
+                else
+                    alert('error');
+            }
+        });
+    });
+    
     $(document).on('click','#show_bk', function(){
         $.ajax({
             url: '../modules/show_books.php',
@@ -40,24 +57,6 @@ $(document).ready(function(){
                     $(button_catalog_container_class).after('<div class = "books"></div>');
                     $('.books').html(data);
                 }else
-                    alert('error');
-            }
-        });
-    });
-
-    $(document).on('click', '#return_button', function(){
-        $.ajax({
-            url: '../views/menu.php',
-            method: 'POST',
-            data: 'menu',
-            success: function(data){
-                if(data){
-                    $('.return_button').remove();
-                    $('.button_catalog_container').remove();
-                    $('.books').remove();
-                    $('#block_up').after(data);
-                }
-                else
                     alert('error');
             }
         });
