@@ -27,7 +27,7 @@ $(document).ready(function(){
             success: function(data){
                 if(data){
                     $('#container').remove();
-                    let return_button = button_generator('return_button','', 'menu_generator()','Назад');
+                    let return_button = button_generator('return_button','return_button',' ','Назад');
                     $('#block_up').after(return_button);
                     let button_catalog_container_class = document.createElement('div');
                     button_catalog_container_class.className = 'button_catalog_container';
@@ -40,6 +40,24 @@ $(document).ready(function(){
                     $(button_catalog_container_class).after('<div class = "books"></div>');
                     $('.books').html(data);
                 }else
+                    alert('error');
+            }
+        });
+    });
+
+    $(document).on('click', '#return_button', function(){
+        $.ajax({
+            url: '../views/menu.php',
+            method: 'POST',
+            data: 'menu',
+            success: function(data){
+                if(data){
+                    $('.return_button').remove();
+                    $('.button_catalog_container').remove();
+                    $('.books').remove();
+                    $('#block_up').after(data);
+                }
+                else
                     alert('error');
             }
         });
