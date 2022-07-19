@@ -287,21 +287,33 @@ $(document).ready(function(){
     });
 
     $(document).on('click','#sell_book', function(){
+        $('#container').remove();
+        let return_button = button_generator('return_button','return_button',' ','Назад');
+        $('#block_up').after(return_button);
         $.ajax({
-            url: '../modules/show_books.php',
+            url: '../modules/balance.php',
             method: 'POST',
-            data: 'books',
+            data: 'balance',
             success: function(data){
                 if(data){
-                    $('#container').remove();
-                    let return_button = button_generator('return_button','return_button',' ','Назад');
-                    $('#block_up').after(return_button);
-                    let button_catalog_container_class = document.createElement('div');
-                    button_catalog_container_class.className = 'button_catalog_container';
-                    return_button.after(button_catalog_container_class);
-                    button_catalog_container_class.append(button_generator('catalog_button','','sell_shop_book()','Продать книгу'));
-                    $(button_catalog_container_class).after('<div class = "books"></div>');
-                    $('.books').html(data);
+                    $('#return_button').after('<div class = "balance"></div>');
+                    $('.balance').html(data);
+                    $.ajax({
+                        url: '../modules/show_books.php',
+                        method: 'POST',
+                        data: 'books',
+                        success: function(data){
+                            if(data){
+                                let button_catalog_container_class = document.createElement('div');
+                                button_catalog_container_class.className = 'button_catalog_container';
+                                $('.balance').after(button_catalog_container_class);
+                                button_catalog_container_class.append(button_generator('catalog_button','','sell_shop_book()','Продать книгу'));
+                                $(button_catalog_container_class).after('<div class = "books"></div>');
+                                $('.books').html(data);
+                            }else
+                                alert('error');
+                        }
+                    });
                 }else
                     alert('error');
             }
