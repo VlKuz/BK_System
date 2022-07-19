@@ -1,4 +1,5 @@
 <?php
+session_start();
 echo '<div id="container" class="container">
 <div class="user">'.$_SESSION["user_name"].'</div>
 <input class="menu_button" id="show_bk" type="button" value="Каталог книг">
