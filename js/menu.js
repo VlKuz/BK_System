@@ -85,6 +85,32 @@ $(document).ready(function(){
         });
     });
 
+    $(document).on('click','#change_author', function(){
+        let id = prompt('Введите id книги:');
+        let new_author = prompt('Введите новое ФИО автора:');
+        $.ajax({
+            url: '../modules/change_author.php',
+            method: 'POST',
+            data: {book_id: id, new_author: new_author},
+            success: function(data){
+                if(data){
+                    $.ajax({
+                        url: '../modules/show_books.php',
+                        method: 'POST',
+                        data: 'books',
+                        success: function(data){
+                            if(data){
+                                $('.books').html(data);
+                            }else
+                                alert('error');
+                        }
+                    });
+                }else
+                    alert('error');
+            }
+        });
+    });
+
     $(document).on('click','#buy_book', function(){
         $.ajax({
             url: '../modules/buy_books.php',
