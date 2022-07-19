@@ -9,7 +9,11 @@ function button_generator(button_class,button_id, button_onclick, button_value){
 }
 function menu_generator(){
     $('.form_auth_block').remove();
-    let container_class = $('.container');
+    let user_class=$('.user');
+    let container_class = document.createElement('div');
+    container_class.setAttribute('id', 'container');
+    container_class.className = 'container';
+    user_class.after(container_class);
     container_class.append(button_generator('menu_button','show_bk',' ','Каталог книг'));
     container_class.append(button_generator('menu_button','buy_book',' ','Купить книги у поставщика'));
     container_class.append(button_generator('menu_button','sell_book',' ','Продать книги'));
