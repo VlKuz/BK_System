@@ -11,7 +11,6 @@ $(document).ready(function(){
                 if(data==1){
                     //message.html('<br>Добро пожаловать!');
                     window.location.reload();
-                    menu_generator();
                 }
                 else
                     message.html('<br>Не верный логин или пароль!');
