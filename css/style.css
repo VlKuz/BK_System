@@ -22,6 +22,9 @@ a{
   text-decoration: none !important;
   border: none !important;
 }
+h2{
+  text-align: center;
+}
 .form_auth_block{
     width: 500px;
     height: 300px;
