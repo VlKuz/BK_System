@@ -111,13 +111,13 @@ $(document).ready(function(){
         });
     });
 
-    $(document).on('click','#change_author', function(){
+    $(document).on('click','#change_price', function(){
         let id = prompt('Введите id книги:');
-        let new_author = prompt('Введите новое ФИО автора:');
+        let new_price = prompt('Введите новую цену:');
         $.ajax({
-            url: '../modules/change_author.php',
+            url: '../modules/change_price.php',
             method: 'POST',
-            data: {book_id: id, new_author: new_author},
+            data: {book_id: id, new_price: new_price},
             success: function(data){
                 if(data){
                     $.ajax({
