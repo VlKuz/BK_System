@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#auth_from").submit(function (e){
+    $("#auth_form").submit(function (e){
         e.preventDefault();
         let message = $('.message');
         let form_data = $(this).serialize();
@@ -9,7 +9,8 @@ $(document).ready(function(){
             data: form_data,
             success: function(data){
                 if(data==1){
-                    message.html('<br>Добро пожаловать!');
+                    //message.html('<br>Добро пожаловать!');
+                    window.location.reload();
                     menu_generator();
                 }
                 else
