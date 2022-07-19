@@ -21,13 +21,25 @@ $(document).ready(function(){
 
     $(document).on('click','#show_bk', function(){
         $.ajax({
-            url: '../modules/exit.php',
+            url: '../modules/show_books.php',
             method: 'POST',
-            data: 'exit_data',
+            data: 'books',
             success: function(data){
-                if(data==1)
-                    window.location.reload();
-                else
+                if(data){
+                    $('#container').remove();
+                    let return_button = button_generator('return_button','', 'menu_generator()','Назад');
+                    $('#block_up').after(return_button);
+                    let button_catalog_container_class = document.createElement('div');
+                    button_catalog_container_class.className = 'button_catalog_container';
+                    return_button.after(button_catalog_container_class);
+                    button_catalog_container_class.append(button_generator('catalog_button','','change_title()','Изменить название'));
+                    button_catalog_container_class.append(button_generator('catalog_button','','change_author()','Изменить автора'));
+                    button_catalog_container_class.append(button_generator('catalog_button','','change_year()','Изменить год'));
+                    button_catalog_container_class.append(button_generator('catalog_button','','change_price()','Изменить цену'));
+                    button_catalog_container_class.append(button_generator('catalog_button','','change_quantity()','Изменить количество'));
+                    $(button_catalog_container_class).after('<div class = "books"></div>');
+                    $('.books').html(data);
+                }else
                     alert('error');
             }
         });
