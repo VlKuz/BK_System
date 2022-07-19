@@ -68,6 +68,7 @@ $(document).ready(function(){
             data: {book_id: id, new_title: new_title},
             success: function(data){
                 if(data){
+                    alert('Название изменено!');
                     $.ajax({
                         url: '../modules/show_books.php',
                         method: 'POST',
@@ -94,6 +95,7 @@ $(document).ready(function(){
             data: {book_id: id, new_author: new_author},
             success: function(data){
                 if(data){
+                    alert('Автор изменен!');
                     $.ajax({
                         url: '../modules/show_books.php',
                         method: 'POST',
@@ -120,6 +122,7 @@ $(document).ready(function(){
             data: {book_id: id, new_year: new_year},
             success: function(data){
                 if(data){
+                    alert('Год изменен!');
                     $.ajax({
                         url: '../modules/show_books.php',
                         method: 'POST',
@@ -146,6 +149,7 @@ $(document).ready(function(){
             data: {book_id: id, new_price: new_price},
             success: function(data){
                 if(data){
+                    alert('Цена изменена!');
                     $.ajax({
                         url: '../modules/show_books.php',
                         method: 'POST',
@@ -172,6 +176,7 @@ $(document).ready(function(){
             data: {book_id: id, new_quantity: new_quantity},
             success: function(data){
                 if(data){
+                    alert('Количество изменено!');
                     $.ajax({
                         url: '../modules/show_books.php',
                         method: 'POST',
@@ -201,6 +206,7 @@ $(document).ready(function(){
             data: {title: title, author: author, year: year, price: price, quantity: quantity},
             success: function(data){
                 if(data){
+                    alert('Книга добавлена!');
                     alert(data);
                     $.ajax({
                         url: '../modules/show_books.php',
