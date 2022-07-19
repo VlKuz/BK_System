@@ -20,6 +20,9 @@ $(document).ready(function(){
                     $('.button_catalog_container').remove();
                     $('.books').remove();
                     $('.supplier_books').remove();
+                    $('#save_a_report').remove();
+                    $('#report_container').remove();
+                    $('.report').remove();
                     $('#block_up').after(data);
                 }
                 else
@@ -92,6 +95,26 @@ $(document).ready(function(){
                     button_catalog_container_class.append(button_generator('catalog_button','','sell_shop_book()','Продать книгу'));
                     $(button_catalog_container_class).after('<div class = "books"></div>');
                     $('.books').html(data);
+                }else
+                    alert('error');
+            }
+        });
+    });
+
+    $(document).on('click','#create_a_report', function(){
+        $.ajax({
+            url: '../modules/create_a_report.php',
+            method: 'POST',
+            data: 'create_a_report',
+            success: function(data){
+                if(data){
+                    $('#container').remove();
+                    let return_button = button_generator('return_button','return_button',' ','Назад');
+                    $('#block_up').after(return_button);
+                    let save_a_report = button_generator('save_a_report','save_a_report',' ','Сохранить отчет');
+                    $(return_button).after(save_a_report);
+                    $(save_a_report).after('<div class = "report"></div>');
+                    $('.report').html(data);
                 }else
                     alert('error');
             }
