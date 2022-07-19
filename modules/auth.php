@@ -10,6 +10,7 @@ $user = $query->fetch(PDO::FETCH_ASSOC);
 
 if($user && password_verify($password, $user["password"])){
     session_start();
+    $_SESSION["user_name"] = $user["name"].' '.$user["last_name"];
     echo 1;
 }else
     echo 2;
