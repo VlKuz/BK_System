@@ -85,6 +85,32 @@ $(document).ready(function(){
         });
     });
 
+    $(document).on('click','#change_year', function(){
+        let id = prompt('Введите id книги:');
+        let new_year = prompt('Введите новый год:');
+        $.ajax({
+            url: '../modules/change_year.php',
+            method: 'POST',
+            data: {book_id: id, new_year: new_year},
+            success: function(data){
+                if(data){
+                    $.ajax({
+                        url: '../modules/show_books.php',
+                        method: 'POST',
+                        data: 'books',
+                        success: function(data){
+                            if(data){
+                                $('.books').html(data);
+                            }else
+                                alert('error');
+                        }
+                    });
+                }else
+                    alert('error');
+            }
+        });
+    });
+
     $(document).on('click','#change_author', function(){
         let id = prompt('Введите id книги:');
         let new_author = prompt('Введите новое ФИО автора:');
