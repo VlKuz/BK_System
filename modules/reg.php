@@ -1,10 +1,10 @@
 <?php
 require_once "../db.php";
-$name="Влад";
-$last_name = "Кузнецов";
-$login = "admin";
-$password = "123";
-$email = "admin@mail.ru";
+$name="Иван";
+$last_name = "Иванов";
+$login = "user1";
+$password = "321";
+$email = "user1@gmail.com";
 
 $sql_search = "SELECT * FROM `users` WHERE `login` = ?";
 $query = $connect->prepare($sql_search);
