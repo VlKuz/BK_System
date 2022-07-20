@@ -265,7 +265,7 @@ $(document).ready(function(){
                     $('#return_button').after('<div class = "balance"></div>');
                     $('.balance').html(data);
                     $.ajax({
-                        url: '../modules/buy_books.php',
+                        url: '../modules/buy_books_table.php',
                         method: 'POST',
                         data: 'supplier_books',
                         success: function(data){
@@ -320,7 +320,7 @@ $(document).ready(function(){
                         }
                     });
                     $.ajax({
-                        url: '../modules/buy_books.php',
+                        url: '../modules/buy_books_table.php',
                         method: 'POST',
                         data: 'supplier_books',
                         success: function(data){
