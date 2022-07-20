@@ -288,7 +288,15 @@ $(document).ready(function(){
 
     $(document).on('click','#buy_new_book', function(){
         let id = prompt('Введите id книги:');
+        if (id<0){
+            alert('Вы ввели отрицательное число!');
+            return 0;
+        }
         let quantity = prompt('Введите количество книг:');
+        if (id<0){
+            alert('Вы ввели отрицательное число!');
+            return 0;
+        }
         $.ajax({
             url: '../modules/buy_new_book.php',
             method: 'POST',
