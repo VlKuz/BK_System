@@ -46,12 +46,12 @@ if($shop_book){
 
     $sql = 'UPDATE `report` SET `purchased_books` = ? WHERE `report_id` = ?';
     $query = $connect->prepare($sql);
-    $query->execute([$quantity, 1]);
+    $query->execute([$report['purchased_books']+$quantity, 1]);
 
     $purchase_amount = $quantity*$supplier_book['price'];
     $sql = 'UPDATE `report` SET `purchase_amount` = ? WHERE `report_id` = ?';
     $query = $connect->prepare($sql);
-    $query->execute([$purchase_amount, 1]);
+    $query->execute([$report['purchase_amount']+$purchase_amount, 1]);
 
     echo 2;
 }else{
@@ -70,12 +70,12 @@ if($shop_book){
 
     $sql = 'UPDATE `report` SET `purchased_books` = ? WHERE `report_id` = ?';
     $query = $connect->prepare($sql);
-    $query->execute([$quantity, 1]);
+    $query->execute([$report['purchased_books']+$quantity, 1]);
 
     $purchase_amount = $quantity*$supplier_book['price'];
     $sql = 'UPDATE `report` SET `purchase_amount` = ? WHERE `report_id` = ?';
     $query = $connect->prepare($sql);
-    $query->execute([$purchase_amount, 1]);
+    $query->execute([$report['purchase_amount']+$purchase_amount, 1]);
     echo 2;
 }
 ?>
