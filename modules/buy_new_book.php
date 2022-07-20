@@ -43,6 +43,16 @@ if($shop_book){
     $sql = 'UPDATE `report` SET `balance` = ? WHERE `report_id` = ?';
     $query = $connect->prepare($sql);
     $query->execute([$total_balance, 1]);
+
+    $sql = 'UPDATE `report` SET `purchased_books` = ? WHERE `report_id` = ?';
+    $query = $connect->prepare($sql);
+    $query->execute([$quantity, 1]);
+
+    $purchase_amount = $quantity*$supplier_book['price'];
+    $sql = 'UPDATE `report` SET `purchase_amount` = ? WHERE `report_id` = ?';
+    $query = $connect->prepare($sql);
+    $query->execute([$purchase_amount, 1]);
+
     echo 2;
 }else{
     $sql = "INSERT INTO `books` (`title`, `author`,`year`, `price`, `quantity`) VALUES (?,?,?,?,?)";
@@ -57,6 +67,15 @@ if($shop_book){
     $sql = 'UPDATE `report` SET `balance` = ? WHERE `report_id` = ?';
     $query = $connect->prepare($sql);
     $query->execute([$total_balance, 1]);
+
+    $sql = 'UPDATE `report` SET `purchased_books` = ? WHERE `report_id` = ?';
+    $query = $connect->prepare($sql);
+    $query->execute([$quantity, 1]);
+
+    $purchase_amount = $quantity*$supplier_book['price'];
+    $sql = 'UPDATE `report` SET `purchase_amount` = ? WHERE `report_id` = ?';
+    $query = $connect->prepare($sql);
+    $query->execute([$purchase_amount, 1]);
     echo 2;
 }
 ?>
