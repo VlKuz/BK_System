@@ -273,8 +273,36 @@ $(document).ready(function(){
                                 let button_catalog_container_class = document.createElement('div');
                                 button_catalog_container_class.className = 'button_catalog_container';
                                 $('.balance').after(button_catalog_container_class);
-                                button_catalog_container_class.append(button_generator('catalog_button','','buy_new_book()','Купить книгу'));
+                                button_catalog_container_class.append(button_generator('catalog_button','buy_new_book','','Купить книгу'));
                                 $(button_catalog_container_class).after('<div class = "supplier_books"></div>');
+                                $('.supplier_books').html(data);
+                            }else
+                                alert('error');
+                        }
+                    });
+                }else
+                    alert('error');
+            }
+        });
+    });
+
+    $(document).on('click','#buy_new_book', function(){
+        let id = prompt('Введите id книги:');
+        let quantity = prompt('Введите количество книг:');
+        $.ajax({
+            url: '../modules/buy_new_book.php',
+            method: 'POST',
+            data: {supplier_book_id: id, quantity: quantity},
+            success: function(data){
+                if(data){
+                    console.log(data);
+                    alert('Книга куплена!');
+                    $.ajax({
+                        url: '../modules/buy_books.php',
+                        method: 'POST',
+                        data: 'supplier_books',
+                        success: function(data){
+                            if(data){
                                 $('.supplier_books').html(data);
                             }else
                                 alert('error');
