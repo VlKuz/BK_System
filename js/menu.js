@@ -208,7 +208,6 @@ $(document).ready(function(){
             success: function(data){
                 if(data){
                     alert('Книга добавлена!');
-                    alert(data);
                     $.ajax({
                         url: '../modules/show_books.php',
                         method: 'POST',
@@ -429,9 +428,7 @@ $(document).ready(function(){
                     $('#container').remove();
                     let return_button = button_generator('return_button','return_button',' ','Назад');
                     $('#block_up').after(return_button);
-                    let save_a_report = button_generator('save_a_report','save_a_report',' ','Сохранить отчет');
-                    $(return_button).after(save_a_report);
-                    $(save_a_report).after('<div class = "report"></div>');
+                    $(return_button).after('<div class = "report"></div>');
                     $('.report').html(data);
                 }else
                     alert('error');
