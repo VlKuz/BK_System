@@ -294,9 +294,21 @@ $(document).ready(function(){
             method: 'POST',
             data: {supplier_book_id: id, quantity: quantity},
             success: function(data){
-                if(data){
+                if(data == 0)
+                    alert('Недостаточно средств для покупки!');
+                else if(data == 1){
                     console.log(data);
                     alert('Книга куплена!');
+                    $.ajax({
+                        url: '../modules/balance.php',
+                        method: 'POST',
+                        data: 'balance',
+                        success: function(data){
+                            if(data){
+                                $('.balance').html(data);
+                            }
+                        }
+                    });
                     $.ajax({
                         url: '../modules/buy_books.php',
                         method: 'POST',
