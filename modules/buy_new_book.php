@@ -20,6 +20,11 @@ if(($quantity*$supplier_book['price'])>$report['balance']){
     return 0;
 }
 
+if(($supplier_book['quantity']-$quantity)<0){
+    echo 1;
+    return 0;
+}
+
 $sql = 'SELECT * FROM `books` WHERE `title` = ? AND `author` = ?' ;
 $query = $connect->prepare($sql);
 $query->execute([$supplier_book['title'], $supplier_book['author']]);
@@ -38,7 +43,7 @@ if($shop_book){
     $sql = 'UPDATE `report` SET `balance` = ? WHERE `report_id` = ?';
     $query = $connect->prepare($sql);
     $query->execute([$total_balance, 1]);
-    echo 1;
+    echo 2;
 }else{
     $sql = "INSERT INTO `books` (`title`, `author`,`year`, `price`, `quantity`) VALUES (?,?,?,?,?)";
     $query = $connect->prepare($sql);
@@ -52,6 +57,6 @@ if($shop_book){
     $sql = 'UPDATE `report` SET `balance` = ? WHERE `report_id` = ?';
     $query = $connect->prepare($sql);
     $query->execute([$total_balance, 1]);
-    echo 1;
+    echo 2;
 }
 ?>
