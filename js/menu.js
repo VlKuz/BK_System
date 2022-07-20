@@ -296,9 +296,11 @@ $(document).ready(function(){
             success: function(data){
                 if(data == 0)
                     alert('Недостаточно средств для покупки!');
-                else if(data == 1){
-                    console.log(data);
-                    alert('Книга куплена!');
+                else if(data == 1)
+                    alert('У поставщика нет столько книг!');
+                else if(data == 2){
+                    //console.log(data);
+                    alert('Успешная покупка!');
                     $.ajax({
                         url: '../modules/balance.php',
                         method: 'POST',
