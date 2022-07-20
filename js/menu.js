@@ -293,7 +293,7 @@ $(document).ready(function(){
             return 0;
         }
         let quantity = prompt('Введите количество книг:');
-        if (id<0){
+        if (quantity<0){
             alert('Вы ввели отрицательное число!');
             return 0;
         }
@@ -357,8 +357,57 @@ $(document).ready(function(){
                                 let button_catalog_container_class = document.createElement('div');
                                 button_catalog_container_class.className = 'button_catalog_container';
                                 $('.balance').after(button_catalog_container_class);
-                                button_catalog_container_class.append(button_generator('catalog_button','','sell_shop_book()','Продать книгу'));
+                                button_catalog_container_class.append(button_generator('catalog_button','sell_shop_book','','Продать книгу'));
                                 $(button_catalog_container_class).after('<div class = "books"></div>');
+                                $('.books').html(data);
+                            }else
+                                alert('error');
+                        }
+                    });
+                }else
+                    alert('error');
+            }
+        });
+    });
+
+    $(document).on('click','#sell_shop_book', function(){
+        let id = prompt('Введите id книги:');
+        if (id<0){
+            alert('Вы ввели отрицательное число!');
+            return 0;
+        }
+        let quantity = prompt('Введите количество книг:');
+        if (quantity<0){
+            alert('Вы ввели отрицательное число!');
+            return 0;
+        }
+        $.ajax({
+            url: '../modules/sell_book.php',
+            method: 'POST',
+            data: {book_id: id, quantity: quantity},
+            success: function(data){
+                console.log(data);
+                if(data == 0){
+                    alert('У вас нет столько книг!');
+                }
+                if(data == 1){
+                    alert('Успешная продажа!');
+                    $.ajax({
+                        url: '../modules/balance.php',
+                        method: 'POST',
+                        data: 'balance',
+                        success: function(data){
+                            if(data){
+                                $('.balance').html(data);
+                            }
+                        }
+                    });
+                    $.ajax({
+                        url: '../modules/show_books.php',
+                        method: 'POST',
+                        data: 'shop_books',
+                        success: function(data){
+                            if(data){
                                 $('.books').html(data);
                             }else
                                 alert('error');
